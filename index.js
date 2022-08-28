@@ -78,7 +78,15 @@ async function extractJiraKeysFromCommit() {
                 else {
                     // console.log("parse-all-commits input val is false");
                     // console.log("head_commit: ", payload.head_commit);
-                    const matches = matchAll(payload.head_commit.message, regex).toArray();
+                    const owner = payload.repository.owner.login;
+                    const repo = payload.repository.name;
+                    const { data } = await octokit.git.getCommit({
+                        owner: owner,
+                        repo: repo,
+                        commit_sha: payload.sha
+                    });
+                    const matches = matchAll(data.message, regex).toArray();
+                    // const matches = matchAll(payload.head_commit.message, regex).toArray();
                     const result = matches.join(',');
                     core.setOutput("jira-keys", result);
                 }
