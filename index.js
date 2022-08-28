@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require('@actions/core');
-const github = require('    ');
+const github = require('@actions/github');
 const matchAll = require("match-all");
 const Octokit = require("@octokit/rest");
 async function extractJiraKeysFromCommit() {

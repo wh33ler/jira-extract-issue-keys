@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const github = require('    ');
+const github = require('@actions/github');
 const matchAll = require("match-all");
 const Octokit = require("@octokit/rest");
 
