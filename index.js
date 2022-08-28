@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require('@actions/core');
-const github = require('@actions/github');
+const github = require('    ');
 const matchAll = require("match-all");
 const Octokit = require("@octokit/rest");
 async function extractJiraKeysFromCommit() {
@@ -83,7 +83,7 @@ async function extractJiraKeysFromCommit() {
                     const { data } = await octokit.git.getCommit({
                         owner: owner,
                         repo: repo,
-                        commit_sha: payload.sha
+                        commit_sha: github.context.sha
                     });
                     const matches = matchAll(data.message, regex).toArray();
                     // const matches = matchAll(payload.head_commit.message, regex).toArray();
